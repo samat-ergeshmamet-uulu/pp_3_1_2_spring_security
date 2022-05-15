@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New user</title>
+</head>
+<body>
+<br/>
+<form th:method="POST" th:action="@{/admin}" th:object="${person}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+    <br/>
+    <label for="surname">Enter surname: </label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+    <div style="color:red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Surname Error</div>
+    <br/>
+    <label for="age">Enter age: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
+    <br/>
+    <label for="password">Enter password: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+    <br/>
+    <label for="roles"><b>Role</b></label>
+    <select multiple class="form-control form-control-sm"
+            id="roles" name="listRoles" size="2" required>
+        <option selected="selected" value="2">USER</option>
+        <option value="1">ADMIN</option>
+    </select>
+    <br/>
+    <hr/>
+    <input type="submit" value="Добавить пользователя"/>
+</form>
+<br/>
+<a href="/admin">Вернуться ко всем пользователям</a>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<a href="/logout">Logout</a>
+</body>
+</html>
